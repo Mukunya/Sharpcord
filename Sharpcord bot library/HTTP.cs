@@ -17,7 +17,7 @@ namespace Sharpcord_bot_library
         {
             this.auth = auth;
         }
-        public JObject Get(string url, JObject body, bool sendbody = true)
+        public JObject Get(string url, JObject? body, bool sendbody = true)
         {
             HttpWebRequest req = WebRequest.CreateHttp(url);
             req.Method = "GET";
@@ -32,7 +32,7 @@ namespace Sharpcord_bot_library
             res.Close();
             return o;
         }
-        public JObject Post(string url, JObject body, string BotToken)
+        public JObject Post(string url, JObject? body, string BotToken)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace Sharpcord_bot_library
             }
             
         }
-        public JObject Patch(string url, JObject body, string BotToken)
+        public JObject Patch(string url, JObject? body, string BotToken)
         {
             HttpWebRequest req = WebRequest.CreateHttp(url);
             req.Method = "PATCH";
@@ -64,7 +64,7 @@ namespace Sharpcord_bot_library
             res.Close();
             return o;
         }
-        public JObject Put(string url, JObject body, string BotToken, bool sendbody = true)
+        public JObject Put(string url, JObject? body, string BotToken, bool sendbody = true)
         {
             HttpWebRequest req = WebRequest.CreateHttp(url);
             req.Method = "PUT";
@@ -79,7 +79,7 @@ namespace Sharpcord_bot_library
             res.Close();
             return o;
         }
-        public JObject Delete(string url, JObject body, string BotToken, bool sendbody = true)
+        public JObject Delete(string url, JObject? body, string BotToken, bool sendbody = true)
         {
             HttpWebRequest req = WebRequest.CreateHttp(url);
             req.Method = "DELETE";
