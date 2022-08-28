@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Sharpcord host": {
+      "commandName": "Project",
+      "commandLineArgs": "-D"
+    }
+  }
+}

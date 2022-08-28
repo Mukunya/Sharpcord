@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharpcord bot library", "Sharpcord bot library\Sharpcord bot library.csproj", "{E331A409-B8E9-4373-B1B2-2EFE59C0860F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharpcord host", "Sharpcord host\Sharpcord host.csproj", "{E76CFB10-CF97-44CF-BA75-DDB5D8DFEA29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E331A409-B8E9-4373-B1B2-2EFE59C0860F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E331A409-B8E9-4373-B1B2-2EFE59C0860F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E331A409-B8E9-4373-B1B2-2EFE59C0860F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E331A409-B8E9-4373-B1B2-2EFE59C0860F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E76CFB10-CF97-44CF-BA75-DDB5D8DFEA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E76CFB10-CF97-44CF-BA75-DDB5D8DFEA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E76CFB10-CF97-44CF-BA75-DDB5D8DFEA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E76CFB10-CF97-44CF-BA75-DDB5D8DFEA29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFD83EC2-7345-4DD6-80AB-DFBE80DF98D7}
+	EndGlobalSection
+EndGlobal
