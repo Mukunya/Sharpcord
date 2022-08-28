@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,15 +30,23 @@ namespace Sharpcord_bot_library
         {
             LogError?.Invoke(sender, e);
         }
+        public HTTP http;
         
     }
     public abstract class GatewayBot : Bot
     {
         GatewayConnection gateway;
         
-        protected void InitBot(string token)
+        /// <summary>
+        /// Initialises the bot and connects to the gateway.
+        /// </summary>
+        /// <param name="auth">
+        /// Must be a bot token to work.
+        /// </param>
+        protected void InitBot(Authorization auth)
         {
-            gateway = new GatewayConnection(token);
+            http = new HTTP(auth);
+            gateway = new GatewayConnection(auth);
             gateway.LogWarn += (object? sender, string e) => { base.logWarn(sender, e); };
             gateway.LogError  += (object? sender, Exception e) => { base.logError(sender, e); };
             gateway.LogInfo  += (object? sender, string e) => { base.logInfo(sender, e); };
@@ -63,8 +72,9 @@ namespace Sharpcord_bot_library
             return bytes;
         }
         public WebhookServer server;
-        protected void InitBot(string endpoint,string publickey)
+        protected void InitBot(string endpoint,string publickey, Authorization auth)
         {
+            http = new HTTP(auth);
             server = new WebhookServer(
                 endpoint,
                 NSec.Cryptography.PublicKey.Import(
@@ -88,6 +98,22 @@ namespace Sharpcord_bot_library
         abstract public void Interaction(JObject o, Action<JObject> Reply);
         abstract public void Interaction_followup(JObject o);
         
+    }
+
+    public sealed class Authorization
+    {
+        public enum AuthType { Bot, Bearer }
+        public AuthType type { get; private set; }
+        public string Token { get; private set; }
+        public Authorization(AuthType type, string token)
+        {
+            this.type = type;
+            Token = token;
+        }
+        public override string ToString()
+        {
+            return type.ToString() + " " + Token;
+        }
     }
 
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]

@@ -28,10 +28,12 @@ namespace Sharpcord_bot_library
         public event EventHandler<Exception> LogError;
 
         public event EventHandler<JObject> INTERACTION_CREATE;
+        private HTTP http;
 
-        public GatewayConnection(string token)
+        public GatewayConnection(Authorization auth)
         {
-            this.token = token;
+            this.token = auth.Token;
+            http = new HTTP(auth);
         }
         ManualResetEvent connected = new ManualResetEvent(false);
         public void Connect()
@@ -39,7 +41,7 @@ namespace Sharpcord_bot_library
             while (true)
             {
                 LogInfo?.Invoke(this, "Connecting.");
-                string gatewayurl = HTTP.Get(Discord.DC_API + "/gateway", new JObject(), token, false)["url"].ToString() + "/?v=9&encoding=json";
+                string gatewayurl = http.Get(Discord.DC_API + "/gateway", new JObject(), false)["url"].ToString() + "/?v=9&encoding=json";
                 LogInfo?.Invoke(this, $"Obtained gateway, address is {gatewayurl}");
                 Socket = new WebSocket(gatewayurl);
 
